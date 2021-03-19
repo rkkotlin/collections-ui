@@ -26,20 +26,36 @@ export default class CollectionList extends React.Component {
                   {this.state.collections.map((item) =>
                      <div>{item["id"]} ---
                      {item["name"]} and Description =
-                     {item["name"]}</div>
+                     {item["collectionobj"]}</div>
+                   // console.log(item)
                   )}
               </div>
           )
 
-        const jsarr2 = [1,2,3,4].map(item => {
-            return (
-                <p key={item}>I am item {item}</p>
-            );
-        });
-        this.state.collections.forEach((item) => {
-            console.log(item)
-            return (
-                <div>item.toString()</div>
-        )})
+
+
     }
+    // return (
+    //     <div
+    //         style={{
+    //             backgroundColor: "lightyellow",
+    //             border: "1px solid yellow",
+    //         <table>
+    //             <tbody>
+    //             {Object.keys(obj).map((itemKey) => {
+    //                 return (
+    //                     <tr key={itemKey}>
+    //                         <td>{itemKey}</td>
+    //                         <td>{itemKey === 'Link' ? <a href={obj[itemKey]}>{obj[itemKey]}</a> : obj[itemKey]}</td>
+    //                     </tr>
+    //                 )
+    //             })}
+    //             </tbody>
+    //         </table>
+    //     </div>
+    // )
+
+    //         }}
+    //     >
+    //             padding: "10px"
 }
