@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {CollectionObject} from "./CollectinObject";
 
 
 
@@ -23,10 +24,10 @@ export default class CollectionList extends React.Component {
     render() {
           return (
               <div>
-                  {this.state.collections.map((item) =>
-                     <div>{item["id"]} ---
-                     {item["name"]} and Description =
-                     {item["collectionobj"]}</div>
+                  {this.state.collections.map((item:CollectionObject) =>
+                     <div>{item.id} ---
+                     {item.name} and Description =
+                     {item.collectionobj}</div>
                    // console.log(item)
                   )}
               </div>

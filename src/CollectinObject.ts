@@ -1,10 +1,10 @@
 export interface  CollectionObject {
     id: number,
     name: string,
-    collectionObj: any
+    collectionobj: any
 }
 export interface CollectinObjectConstructor {
-    new (id: number, name:string, collectionObj: any) :CollectionObject;
+    new (id: number, name:string, collectionobj: any) :CollectionObject;
     clone():CollectionObject
 }
 // ) {
