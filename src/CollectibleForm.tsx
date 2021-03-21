@@ -15,9 +15,6 @@ const defaultValues = {
     category: "",
     year: 0,
     age: 0,
-    gender: "",
-    os: "",
-    favoriteNumber: 0,
 };
 const Form = () => {
     const [formValues, setFormValues] = useState(defaultValues);
