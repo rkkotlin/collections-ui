@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import {CollectionObject} from "./CollectinObject";
+import {colors, Table} from "@material-ui/core";
+import {DataGrid} from "@material-ui/data-grid";
 
 
 
@@ -22,67 +24,21 @@ export default class CollectionList extends React.Component {
     }
 
     render() {
+        const columns = [
+            { field: 'id', headerName: 'ID', width: 70 },
+            { field: 'name', headerName: 'Name', width: 130 },
+            { field: 'collectionobj', headerName: 'Description', width: 130 },
+
+        ];
           return (
-              <div>
-                  <table style={{border: "solid" }}>
-                      <th>
-                          <tr>
-                              <td>ID</td>
-                              <td>Name</td>
-                              <td>Description</td>
-                          </tr>
-                          <hr/>
-                      </th>
-                  <tbody>
-                  {this.state.collections.map((item:CollectionObject) =>
-                     <div>
-
-                             <tr>
-                                 <td>
-                                     {item.id}
-                                 </td>
-                                 <td>
-                                 {item.name}
-                                 </td>
-                                 <td>
-                                 {item.collectionobj}
-                                 </td>
-                             </tr>
-                         <hr/>
-
-
-                        </div>
-                   // console.log(item)
-                  )}
-                  </tbody>
-                  </table>
+              <div style={{ height: 400, width: '100%' }}>
+                  <DataGrid rows={this.state.collections} columns={columns} pageSize={5} checkboxSelection />
               </div>
+
           )
 
 
 
     }
-    // return (
-    //     <div
-    //         style={{
-    //             backgroundColor: "lightyellow",
-    //             border: "1px solid yellow",
-    //         <table>
-    //             <tbody>
-    //             {Object.keys(obj).map((itemKey) => {
-    //                 return (
-    //                     <tr key={itemKey}>
-    //                         <td>{itemKey}</td>
-    //                         <td>{itemKey === 'Link' ? <a href={obj[itemKey]}>{obj[itemKey]}</a> : obj[itemKey]}</td>
-    //                     </tr>
-    //                 )
-    //             })}
-    //             </tbody>
-    //         </table>
-    //     </div>
-    // )
 
-    //         }}
-    //     >
-    //             padding: "10px"
 }
