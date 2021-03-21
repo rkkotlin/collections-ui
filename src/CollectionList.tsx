@@ -24,12 +24,38 @@ export default class CollectionList extends React.Component {
     render() {
           return (
               <div>
+                  <table style={{border: "solid" }}>
+                      <th>
+                          <tr>
+                              <td>ID</td>
+                              <td>Name</td>
+                              <td>Description</td>
+                          </tr>
+                          <hr/>
+                      </th>
+                  <tbody>
                   {this.state.collections.map((item:CollectionObject) =>
-                     <div>{item.id} ---
-                     {item.name} and Description =
-                     {item.collectionobj}</div>
+                     <div>
+
+                             <tr>
+                                 <td>
+                                     {item.id}
+                                 </td>
+                                 <td>
+                                 {item.name}
+                                 </td>
+                                 <td>
+                                 {item.collectionobj}
+                                 </td>
+                             </tr>
+                         <hr/>
+
+
+                        </div>
                    // console.log(item)
                   )}
+                  </tbody>
+                  </table>
               </div>
           )
 
