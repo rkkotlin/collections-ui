@@ -10,6 +10,7 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import Slider from "@material-ui/core/Slider";
 import Button from "@material-ui/core/Button";
+import axios from "axios";
 const defaultValues = {
     name: "",
     category: "",
@@ -21,26 +22,41 @@ const defaultValues = {
 };
 const Form = () => {
     const [formValues, setFormValues] = useState(defaultValues);
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: any) => {
         const { name, value } = e.target;
         setFormValues({
             ...formValues,
             [name]: value,
         });
     };
-    const handleSliderChange = (name) => (e, value) => {
-        setFormValues({
-            ...formValues,
-            [name]: value,
-        });
-    };
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(formValues );
+    // const handleSliderChange = (name) => (e, value) => {
+    //     setFormValues({
+    //         ...formValues,
+    //         [name]: value,
+    //     });
+    // };
+    const handleSubmit = (event: any) => {
+        event.preventDefault()
+        let jsonValues = JSON.stringify(formValues)
+        axios.post('https://localhost:8080/collection/cs1', {
+            // method: 'POST',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: jsonValues
+        }).then(res =>
+                console.log(res.data.toString())
+        ).catch( res =>
+            console.log("I am here!!!!")
+        )
+        console.log(jsonValues )
+        // console.log(formValues )
     };
     return (
         <form onSubmit={handleSubmit}>
-            <Grid container alignItems="center" justify="center" direction="column">
+            <Grid container alignItems="flex-start" justify="center" direction="column">
                 <Grid item>
                     <TextField
                         id="name-input"
@@ -158,6 +174,7 @@ const Form = () => {
                 {/*        />*/}
                 {/*    </div>*/}
                 {/*</Grid>*/}
+                <br/>
                 <Button variant="contained" color="primary" type="submit">
                     Submit
                 </Button>
