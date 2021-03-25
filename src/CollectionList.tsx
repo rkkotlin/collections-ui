@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {CollectionObject} from "./CollectinObject";
+import {CollectionObject} from "./CollectionObject";
 import {colors, Table} from "@material-ui/core";
 import {DataGrid} from "@material-ui/data-grid";
 
@@ -28,6 +28,7 @@ export default class CollectionList extends React.Component {
             { field: 'id', headerName: 'ID', width: 70 },
             { field: 'name', headerName: 'Name', width: 130 },
             { field: 'collectionobj', headerName: 'Description', width: 130 },
+            { field: 'itemcontents', headerName: 'Item contents JSON', width: 130 },
 
         ];
           return (

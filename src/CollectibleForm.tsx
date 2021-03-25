@@ -11,11 +11,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Slider from "@material-ui/core/Slider";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
+import { CollectionObject, CollectionObjectConstructor} from "./CollectionObject";
 const defaultValues = {
     name: "",
-    category: "",
-    year: 0,
-    age: 0,
+    collectionobj: "",
+    itemcontents: "",
     // gender: "",
     // os: "",
     // favoriteNumber: 0,
@@ -37,21 +37,25 @@ const Form = () => {
     // };
     const handleSubmit = (event: any) => {
         event.preventDefault()
+        console.log(formValues)
         let jsonValues = JSON.stringify(formValues)
-        axios.post('https://localhost:8080/collection/cs1', {
-            // method: 'POST',
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: jsonValues
-        }).then(res =>
-                console.log(res.data.toString())
-        ).catch( res =>
-            console.log("I am here!!!!")
-        )
-        console.log(jsonValues )
+        // let collectionObj: CollectionObject;
+        // collectionObj.id=23333
+        // collectionObj.name ='stamp'
+        // collectionObj.collectionobj = 'something'
+        // collectionObj.itemcontents = jsonValues
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST','http://localhost:8080/collection/cs', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify( formValues));
+        // axios.post('http://localhost:8080/collection/cs1', {
+        //     body:collectionObj
+        // }).then(res =>
+        //         console.log(res.data.toString())
+        // ).catch( res =>
+        //     console.log("I am here!!!!")
+        // )
+        console.log(jsonValues)
         // console.log(formValues )
     };
     return (
@@ -70,33 +74,33 @@ const Form = () => {
                 <Grid item>
                     <TextField
                         id="category-input"
-                        name="category"
-                        label="Category"
+                        name="collectionobj"
+                        label="Collection Group"
                         type="text"
-                        value={formValues.category}
+                        value={formValues.collectionobj}
                         onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item>
                     <TextField
                         id="year-input"
-                        name="year"
-                        label="Year"
-                        type="number"
-                        value={formValues.year}
+                        name="itemcontents"
+                        label="Item Desc"
+                        type="text"
+                        value={formValues.itemcontents}
                         onChange={handleInputChange}
                     />
                 </Grid>
-                <Grid item>
-                    <TextField
-                        id="age-input"
-                        name="age"
-                        label="Age"
-                        type="number"
-                        value={formValues.age}
-                        onChange={handleInputChange}
-                    />
-                </Grid>
+                {/*<Grid item>*/}
+                {/*    <TextField*/}
+                {/*        id="age-input"*/}
+                {/*        name="age"*/}
+                {/*        label="Age"*/}
+                {/*        type="number"*/}
+                {/*        value={formValues.age}*/}
+                {/*        onChange={handleInputChange}*/}
+                {/*    />*/}
+                {/*</Grid>*/}
                 {/*<Grid item>*/}
                 {/*    <FormControl>*/}
                 {/*        <FormLabel>Gender</FormLabel>*/}
