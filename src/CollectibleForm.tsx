@@ -191,12 +191,12 @@ const Form = () => {
                 {/*    </div>*/}
                 {/*</Grid>*/}
                 <br/>
-                {/*<Button variant="contained" color="primary" type="submit" onClick={handleClose}>*/}
-                {/*    Cancel*/}
-                {/*</Button>*/}
-                {/*<Button variant="contained" color="primary" type="submit" >*/}
-                {/*    Submit*/}
-                {/*</Button>*/}
+                <Button variant="contained" color="primary" type="submit" onClick={handleClose}>
+                    Cancel
+                </Button>
+                <Button variant="contained" color="primary" type="submit" onClick={handleSubmit} >
+                    Submit
+                </Button>
             </Grid>
         </form>
     );

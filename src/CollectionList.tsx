@@ -87,8 +87,8 @@ export default class CollectionList extends React.Component {
                     <DataGrid rows={this.state.collections} columns={columns} pageSize={5} checkboxSelection autoHeight={true}/>
 
                 </Container>
-
-           <SimpleModal/>
+            <CollectibleForm/>
+           {/*<SimpleModal/>*/}
             </div>
         )
 
