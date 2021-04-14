@@ -20,21 +20,34 @@ const defaultValues = {
     // os: "",
     // favoriteNumber: 0,
 };
+
+
+
 const Form = () => {
+
     const [formValues, setFormValues] = useState(defaultValues);
     const handleInputChange = (e: any) => {
         const { name, value } = e.target;
         setFormValues({
             ...formValues,
             [name]: value,
+
         });
     };
+    const [open, setOpen] = React.useState(false);
     // const handleSliderChange = (name) => (e, value) => {
     //     setFormValues({
     //         ...formValues,
     //         [name]: value,
     //     });
     // };
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     const handleSubmit = (event: any) => {
         event.preventDefault()
         console.log(formValues)
@@ -55,8 +68,7 @@ const Form = () => {
         // ).catch( res =>
         //     console.log("I am here!!!!")
         // )
-        console.log(jsonValues)
-        // console.log(formValues )
+        handleClose()
     };
     return (
         <form onSubmit={handleSubmit}>
@@ -179,9 +191,12 @@ const Form = () => {
                 {/*    </div>*/}
                 {/*</Grid>*/}
                 <br/>
-                <Button variant="contained" color="primary" type="submit">
-                    Submit
-                </Button>
+                {/*<Button variant="contained" color="primary" type="submit" onClick={handleClose}>*/}
+                {/*    Cancel*/}
+                {/*</Button>*/}
+                {/*<Button variant="contained" color="primary" type="submit" >*/}
+                {/*    Submit*/}
+                {/*</Button>*/}
             </Grid>
         </form>
     );
