@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
 import CollectibleForm from "./CollectibleForm";
 import Grid from "@material-ui/core/Grid";
+
+const defaultValues = {
+    name: "",
+    collectionobj: "",
+    itemcontents: "",
+    // gender: "",
+    // os: "",
+    // favoriteNumber: 0,
+};
 
 function rand() {
     return Math.round(Math.random() * 20) - 10;
@@ -36,13 +45,27 @@ const useStyles = makeStyles(theme => ({
 
 export default function SimpleModal() {
     const classes = useStyles();
+    const [formValues, setFormValues] = useState(defaultValues);
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
-
+  
     const handleOpen = () => {
         setOpen(true);
     };
+    const handleSubmit = (event: any) => {
+        event.preventDefault()
+        console.log(formValues)
+        let jsonValues = JSON.stringify(formValues)
+       
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST','http://localhost:8080/collection/cs', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify( formValues));
 
+        // handleClose()
+
+    }
+ 
     const handleClose = () => {
         setOpen(false);
     };
@@ -54,6 +77,7 @@ export default function SimpleModal() {
             </Button>
 
             <Modal
+                id="item-modal"
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
                 open={open}
@@ -65,7 +89,7 @@ export default function SimpleModal() {
                     <Button variant="contained" color="primary" type="submit" onClick={handleClose}>
                         Cancel
                     </Button>
-                    <Button variant="contained" color="primary" type="submit" >
+                    <Button variant="contained" color="primary" type="submit" onClick={handleSubmit} >
                         Submit
                     </Button>
                 </div>

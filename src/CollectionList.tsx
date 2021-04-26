@@ -29,6 +29,7 @@ export default class CollectionList extends React.Component {
                 console.log(collections)
                 this.setState({collections})
             })
+            console.log("here " + this.props)
 
     }
 
@@ -49,36 +50,6 @@ export default class CollectionList extends React.Component {
                 setOpen(false);
             };
         };
-            // return (
-            //     <div>
-            //
-            //         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-            //             <DialogTitle id="form-dialog-title">Item Form</DialogTitle>
-            //             <DialogContent>
-            //                 <DialogContentText>
-            //                     To subscribe to this website, please enter your email address here. We will send updates
-            //                     occasionally.
-            //                 </DialogContentText>
-            //                 <TextField
-            //                     autoFocus
-            //                     margin="dense"
-            //                     id="name"
-            //                     label="Email Address"
-            //                     type="email"
-            //                     fullWidth
-            //                 />
-            //             </DialogContent>
-            //             <DialogActions>
-            //                 <Button onClick={handleClose} color="primary">
-            //                     Cancel
-            //                 </Button>
-            //                 <Button onClick={handleClose} color="primary">
-            //                     Subscribe
-            //                 </Button>
-            //             </DialogActions>
-            //         </Dialog>
-            //     </div>
-            // )
 
         return (
             <div style={{height: 400, width: '100%'}}>
