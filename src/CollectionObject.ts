@@ -1,10 +1,10 @@
 export interface  CollectionObject {
     name: string,
-    collectionobj: any,
-    itemcontents: any,
+    itemContents: any,
+    category: string,
 }
 export interface  CollectionObjectConstructor {
-    new (name:string, collectionobj: any,itemcontents: any) :CollectionObject;
+    new (name:string, itemContents: any,category: any) :CollectionObject;
     clone():CollectionObject
 }
 // ) {
