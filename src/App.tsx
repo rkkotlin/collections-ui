@@ -31,7 +31,7 @@ function App() {
         {
             <div>
 
-             <CollectionList/>
+             <CollectionList isShown={open}/>
 
             </div>
 

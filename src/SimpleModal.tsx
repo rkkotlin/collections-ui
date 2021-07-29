@@ -86,12 +86,6 @@ export default function SimpleModal() {
                 <div style={modalStyle} className={classes.paper}>
                     <h2>Simple React Modal</h2>
                     <CollectibleForm name={""} category={""} itemContents={""}/>
-                    {/*<Button variant="contained" color="primary" type="submit" onClick={handleClose}>*/}
-                    {/*    Cancel*/}
-                    {/*</Button>*/}
-                    {/*<Button variant="contained" color="primary" type="submit" onClick={handleSubmit} >*/}
-                    {/*    Submit*/}
-                    {/*</Button>*/}
                 </div>
             </Modal>
         </div>
