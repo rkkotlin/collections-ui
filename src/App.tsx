@@ -4,22 +4,10 @@ import './App.css';
 import CollectionList from "./CollectionList";
 import {Container, Typography} from "@material-ui/core";
 import CollectibleForm from "./CollectibleForm";
-import FormDialog from "./FormDialog";
-import SimpleModal from './SimpleModal';
 import Button from "@material-ui/core/Button";
 
 
 function App() {
-    const [open, setOpen] = React.useState(false);
-
-    const handleOpen = () => {
-        setOpen(true);
-        <SimpleModal/>
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
 
   return (
     <div className="App">
@@ -31,7 +19,7 @@ function App() {
         {
             <div>
 
-             <CollectionList isShown={open}/>
+             <CollectionList/>
 
             </div>
 

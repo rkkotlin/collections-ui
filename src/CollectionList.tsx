@@ -10,46 +10,32 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import TextField from "@material-ui/core/TextField";
 import DialogActions from "@material-ui/core/DialogActions";
-import SimpleModal from "./SimpleModal";
+import FormDialog from './FormDialog';
 
-interface collectionProps {
-    isShown: boolean
-}
 
-// export default class CollectionList extends React.Component {
-const CollectionList: React.FC<collectionProps | null> = (props) => {
-    // state = {
-    //     collections: [],
-    //     isShown: false
-    // }
+const CollectionList: React.FC = () => {
+    const [open, setOpen] = React.useState(false);
+    const [name, setName] = React.useState("");
+    const [description, setDescription] = React.useState("");
     const [collections, setCollections] = React.useState([]);
-    const [isShown, setIsShown] = React.useState(props.isShown);
- // Define the function that fetches the data from API
- const fetchData = async () => {
-    const { data } = await axios.get("http://localhost:8080/collection/cs/");
-    setCollections(data);
-  };
+    const changeName = (name:string) => {
+        setName(name );
+      }
+      const changeDesc = (desc:string) => {
+        setDescription(desc );
+      }
+    const fetchData = async () => {
+        const { data } = await axios.get("http://localhost:8080/collection/cs/");
+        setCollections(data);
+    };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-    // useEffect(() => {}
-    //     axios.get("http://localhost:8080/collection/cs/")
-    //         .then(response => {
-    //             dispatch(setCollections(response.data))})
-    //         //   return setCollections(res)
-    //         }, [dispatch]
-    //         );
-        
+    useEffect(() => {
+        fetchData();
+    }, []);
+   //     console.log(collections)
 
-        // axios.get(`http://localhost:8080/collection/cs/`)
-        //     .then(res => {
-        //          setState({collections: res.data})
-        //         // setCollections(res.data)
-        //         console.log(collections)
-        
 
-        const columns = [
+    const columns = [
         { field: 'id', headerName: 'ID', width: 70 },
         { field: 'name', headerName: 'Name', width: 130 },
         { field: 'collectionobj', headerName: 'Description', width: 130 },
@@ -75,27 +61,18 @@ const CollectionList: React.FC<collectionProps | null> = (props) => {
         },
 
     ];
-    const handleClickOpen = () => {
-        console.log("are you here")
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        const [open, setOpen] = React.useState(false);
-        const handleClose = () => {
-            setOpen(false);
-        };
-    };
+ 
 
 
     return (
         <div style={{ height: 400, width: '100%' }}>
-
+     {name}
             <Container>
                 <DataGrid rows={collections} columns={columns} pageSize={5} checkboxSelection autoHeight={true} />
-                <Button variant="contained" color="primary" type="submit" >
-                    Edit
-                </Button>
             </Container>
-
-            <SimpleModal />
+            <FormDialog open={open} name={name}  desc={description} changeName={changeName} changeDesc={changeDesc}/>
+            {/* <FormDialog open={isShown}/> */}
+            {/* <SimpleModal /> */}
         </div>
     );
 };
