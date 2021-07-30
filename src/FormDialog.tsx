@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -6,6 +6,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import axios from 'axios';
+import { resolve } from 'url';
 
 interface FormProps {
     open: boolean,
@@ -15,7 +17,30 @@ interface FormProps {
     changeDesc: any
 }
 // export default function FormDialog() {
+  export class CollectionGroupDO {
+      constructor(
+       public  name: string,
+        public collectionobj: string,
+        public itemcontents: string
+      ) {}
+    }
+
 const FormDialog: React.FC<FormProps> = (props) => {
+    const saveData = async () => {
+        const collectionGroupDO: CollectionGroupDO = {
+            name: props.name, 
+            collectionobj: props.desc,
+            itemcontents: ""
+        }    
+        const data  = await axios.post("http://localhost:8080/collection/cs/", collectionGroupDO).then(() => {
+         
+        });
+        console.log(data)
+        
+    };
+    // useEffect(() => {
+    //     saveData();
+    // }, []);
     const [open, setOpen] = React.useState(props.open);
     const [name, setName] = React.useState("");
 
@@ -35,7 +60,11 @@ const FormDialog: React.FC<FormProps> = (props) => {
     const handleDescChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
         props.changeDesc(e.target.value)
     }
-
+    const saveAndClose = (): void => {
+        saveData()
+        handleClose()
+    }
+  
     return (
         <div>
 
@@ -75,7 +104,7 @@ const FormDialog: React.FC<FormProps> = (props) => {
                     <Button onClick={handleClose} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={saveAndClose} color="primary">
                         Subscribe
                     </Button>
                 </DialogActions>

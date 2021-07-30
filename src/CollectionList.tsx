@@ -41,7 +41,7 @@ const CollectionList: React.FC = () => {
         { field: 'collectionobj', headerName: 'Description', width: 130 },
         { field: 'itemcontents', headerName: 'Item contents JSON', width: 130 },
         {
-            field: "", headerName: "", width: 128, renderCell: (params: any) => {
+            field: "...", headerName: "", width: 128, renderCell: (params: any) => {
                 const onClick = () => {
                     const api: GridApi = params.api;
                     const fields = api
@@ -53,8 +53,8 @@ const CollectionList: React.FC = () => {
                     fields.forEach((f) => {
                         thisRow[f] = params.getValue(f);
                     });
-
-                    return alert(JSON.stringify(thisRow, null, 4));
+                    // return <FormDialog open={open} name={thisRow.name}  desc={thisRow.collectionobj} changeName={changeName} changeDesc={changeDesc}/>
+                    return  alert(JSON.stringify(thisRow, null, 4));
                 };
                 return <Button onClick={onClick}>Edit</Button>;
             }
@@ -71,8 +71,6 @@ const CollectionList: React.FC = () => {
                 <DataGrid rows={collections} columns={columns} pageSize={5} checkboxSelection autoHeight={true} />
             </Container>
             <FormDialog open={open} name={name}  desc={description} changeName={changeName} changeDesc={changeDesc}/>
-            {/* <FormDialog open={isShown}/> */}
-            {/* <SimpleModal /> */}
         </div>
     );
 };
