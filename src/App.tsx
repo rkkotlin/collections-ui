@@ -1,21 +1,26 @@
-import React from 'react';
-import axios from 'axios';
 import './App.css';
 import CollectionList from "./CollectionList";
+import {Container, Typography} from "@material-ui/core";
 
 
 function App() {
 
-
   return (
     <div className="App">
 
-     <div>
-        Collections - Store your collectibles data here
-        </div>
+<Container>
+    <Typography color="textPrimary" gutterBottom variant="h2" align="center">
+        Your Collectibles App
+</Typography>
         {
-            <CollectionList/>
+            <div>
+
+             <CollectionList/>
+
+            </div>
+
         }
+</Container>
     </div>
   );
 }
