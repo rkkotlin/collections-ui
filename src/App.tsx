@@ -1,10 +1,6 @@
-import React from 'react';
-import axios from 'axios';
 import './App.css';
 import CollectionList from "./CollectionList";
 import {Container, Typography} from "@material-ui/core";
-import CollectibleForm from "./CollectibleForm";
-import Button from "@material-ui/core/Button";
 
 
 function App() {
